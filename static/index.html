@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Week Exercise Builder</title>
+</head>
+<body>
+    <div class="header">
+        <button class="nav-arrow" onclick="previousDay()">&#8592;</button>
+        <div class="date-info">
+            <div class="day" id="day-name"></div>
+        </div>
+        <button class="nav-arrow" onclick="nextDay()">&#8594;</button>
+    </div>
+
+    <div id="exercise-container">
+        <div id="exercise-cards" class="exercise-cards"></div>
+        <div class="exercise-inputs">
+            <input type="text" id="exercise-name" placeholder="Enter exercise">
+            <input type="number" id="weight" placeholder="Enter weight">
+            <select name="unit" id="unit">
+                <option value="kg">Kg</option>
+                <option value="Lbs">Lbs</option>
+            </select>
+            <input type="number" id="rep-range-min" placeholder="Enter min. reps">
+            <input type="number" id="rep-range-max" placeholder="Enter max reps.">
+        </div>
+    </div>
+
+    <div class="footer-menu">
+        <label for="file-input" class="import-button">Import</label>
+        <input type="file" id="file-input" accept=".json" style="display: none;" onchange="importData(event)">
+        <button disabled></button>
+        <button class="add-button" onclick="addExercise()"></button>
+        <button disabled></button>
+        <button onclick="exportData()">Export</button>
+    </div>
+
+    <script src="../src/script.js"></script>
+</body>
+</html>

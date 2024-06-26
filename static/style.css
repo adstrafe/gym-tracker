@@ -1,0 +1,340 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+    background-color: #22213d;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #6a0dad; 
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+div.info {
+    margin: 10px;
+}
+
+.info > * {
+    padding: 5px;
+}
+
+.info > h2 {
+    color: #6a0dad;
+}
+
+.nav-arrow {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.date-info {
+    text-align: center;
+}
+
+.date-info .day {
+    font-size: 20px;
+}
+
+.date-info .date {
+    font-size: 16px;
+}
+
+#exercise-container {
+    padding: 10px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.exercise-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.exercise-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #6a0dad;
+    border-radius: 5px;
+    background-color: #232020;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.2s ease-in;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.exercise-inputs .rep-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.exercise-card .rep-range-inputs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1 1 auto;
+}
+
+.exercise-card .rep-range-inputs input {
+    flex: 1 1 0;
+    min-width: 40px;
+}
+
+.exercise-card .rep-range-inputs span {
+    flex: none;
+}
+
+.exercise-card__delete {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    min-width: 90px; /* Minimum width to prevent shrinking */
+}
+
+.exercise-card__delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    min-height: 50px; /* Minimum height to prevent shrinking */
+    z-index: 999;
+}
+
+.exercise-card__delete::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #bc000033; /* Purple background */
+    z-index: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.exercise-card__delete:hover::before {
+    transform: scaleX(1);
+}
+
+.exercise-card .centered {
+    text-align: center;
+}
+
+.exercise-card .info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 10px;
+    max-width: calc(100% - 90px);
+}
+
+.exercise-card .info div {
+    margin-bottom: 5px;
+}
+
+.exercise-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.exercise-inputs input, .exercise-inputs select, .exercise-inputs button, input {
+    padding: 10px;
+    border: 1px solid #6a0dad;
+    border-radius: 5px;
+    background-color: #191717;
+    color: #fff;
+    outline: none;
+}
+
+.exercise-inputs button {
+    background-color: #6a0dad;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.exercise-inputs button:hover {
+    background-color: #4b0082;
+}
+
+.footer-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #6a0dad; /* Purple background */
+    color: #fff; /* White text */
+    border-top: 1px solid #ccc;
+    position: relative;
+}
+
+.footer-menu button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #fff; /* White text */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer-menu .import-button {
+    background: none;
+    border: none;
+    color: #fff; /* White text */
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+.footer-menu button:hover {
+    color: #ccc; /* Lighter color on hover */
+}
+
+.footer-menu .add-button {
+    background-color: #6a0dad; /* Purple background */
+    color: #fff; /* White text */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #fff; /* White border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: -35px; /* Adjust to position the button */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.footer-menu .add-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: #6a0dad; /* Purple background */
+    z-index: 0;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.footer-menu .add-button:hover {
+    color: #fff; /* White color on hover */
+}
+
+.footer-menu .add-button::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Above the animated background */
+}
+
+.footer-menu .add-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: #4b0082; /* Darker purple background on hover */
+}
+
+.footer-menu .add-button:hover {
+    color: #fff; /* White color on hover */
+}
+
+.footer-menu .add-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.footer-menu .add-button:hover::after {
+    color: #fff; /* White color on hover */
+}
+
+.footer-menu .add-button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+    background: #4b0082; /* Darker purple background on hover */
+}
+
+
+@media (min-width: 600px) {
+    .exercise-inputs {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .exercise-inputs input, .exercise-inputs select, .exercise-inputs button {
+        flex: 1 1 auto;
+        min-width: 150px;
+    }
+
+    .exercise-inputs button {
+        flex: 0 0 auto;
+    }
+}
+
+@media (min-width: 600px) {
+    .exercise-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .exercise-card {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: 900px) {
+    .exercise-card {
+        width: calc(33.33% - 10px);
+    }
+}
